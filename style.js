@@ -4,7 +4,7 @@ const count= document.getElementById('count');
 const total= document.getElementById('total');
 const movieselect= document.getElementById('movie');
 
-const ticketprice = +movieselect.value;
+let ticketprice = +movieselect.value;
 
 //function to calculate price
 function updatedselectedcount(){
@@ -12,7 +12,14 @@ function updatedselectedcount(){
     const selectedseatscount = selectedseats.length;
     count.innerText = selectedseatscount;
     total.innerText = selectedseatscount * ticketprice;
+    
 }
+//movie select
+movieselect.addEventListener('change', e=>{
+    ticketprice= +e.target.value;
+    updatedselectedcount();
+});
+
 
 container.addEventListener('click',e=>{
    if
@@ -24,5 +31,7 @@ container.addEventListener('click',e=>{
     updatedselectedcount();
    }
 });
+
+updatedselectedcount();
 
 
